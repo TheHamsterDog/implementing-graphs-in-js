@@ -12,6 +12,12 @@ class Graph {
     this.adjacentList[node] = [];
     return this.adjacentList[node]
   }
+  removeVertex(node){
+    this.adjacentList[node].forEach(node2=>{
+      this.removeEdge(node, node2);
+    })
+    delete this.adjacentList[node]
+  }
   addEdge(node1, node2) {
     console.log(this.numberOfNodes)
     if (this.adjacentList[node1].includes(node2)) {
@@ -61,6 +67,8 @@ myGraph.addEdge('6', '5');
 
 myGraph.showConnections();
 myGraph.removeEdge('6', '5');
+myGraph.showConnections()
+myGraph.removeVertex("6")
 myGraph.showConnections()
 //Answer:
 // 0-->1 2 
