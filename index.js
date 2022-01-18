@@ -21,6 +21,13 @@ class Graph {
     this.adjacentList[node2].push(node1);
     //undirected Graph 
   }
+  removeEdge(node1, node2) {
+    if (this.adjacentList[node1].includes(node2)) {
+      this.adjacentList[node1] = this.adjacentList[node1].filter(a => a !== node2);
+
+      this.adjacentList[node2] = this.adjacentList[node2].filter(a => a !== node1);
+    }
+  }
   showConnections() {
     const allNodes = Object.keys(this.adjacentList);
     for (let node of allNodes) {
@@ -53,6 +60,8 @@ myGraph.addEdge('0', '2');
 myGraph.addEdge('6', '5');
 
 myGraph.showConnections();
+myGraph.removeEdge('6', '5');
+myGraph.showConnections()
 //Answer:
 // 0-->1 2 
 // 1-->3 2 0 
